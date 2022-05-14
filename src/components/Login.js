@@ -1,12 +1,13 @@
 import React, { useState } from "react";
-import { useHistory } from "react-router-dom";
+import { useHistory, Redirect } from "react-router-dom";
 
-function Login({ setIsLoggedIn }) {
+function Login({ setIsLoggedIn, isLoggedIn }) {
   const history = useHistory();
-  const [formData, setFormData] = useState({
-    username: "",
-    password: "",
-  });
+    const [formData, setFormData] = useState({
+      username: "",
+      password: "",
+    });
+  if (isLoggedIn) return <Redirect to="/" />;
 
   function handleChange(e) {
     setFormData({
@@ -43,5 +44,6 @@ function Login({ setIsLoggedIn }) {
     </form>
   );
 }
+
 
 export default Login;
